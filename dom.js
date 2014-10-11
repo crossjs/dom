@@ -59,6 +59,7 @@ define(function(require, exports, module) {
 
       if (target.constructor === Dom) {
         this.swap(target.node);
+        this.node.__DOM = target;
         target.node = this.node;
       } else {
         caret = target.nextSibling;
@@ -71,6 +72,7 @@ define(function(require, exports, module) {
           this.node.parentNode.appendChild(this.node);
         }
 
+        target.__DOM = this;
         this.node = target;
       }
 
