@@ -23,7 +23,11 @@ define(function(require, exports, module) {
       var p;
 
       for (p in obj) {
-        this.node.setAttribute(p, obj[p]);
+        if (obj[p] === null) {
+          this.node.removeAttribute(p);
+        } else {
+          this.node.setAttribute(p, obj[p]);
+        }
       }
 
       return this;
