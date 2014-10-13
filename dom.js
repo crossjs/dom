@@ -39,16 +39,10 @@ define(function(require, exports, module) {
     },
 
     replace: function(target) {
-      var node = this.node,
-        parentNode = node.parentNode;
-
-      if (!parentNode) {
-        return this;
-      }
-
-      parentNode.insertBefore(target, node);
+      this.before(target);
       this.remove();
-
+      
+      target.__DOM = this;
       this.node = target;
 
       return this;
